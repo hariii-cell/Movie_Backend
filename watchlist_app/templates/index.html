@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Watchlist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .feature {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature h3 {
+            color: #667eea;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .api-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .api-link {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: #667eea;
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .api-link:hover {
+            background: #667eea;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .status {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .status-badge {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4caf50;
+            display: inline-block;
+        }
+
+        .status-text {
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🎬</div>
+        <h1>Movie Watchlist</h1>
+        <p class="subtitle">Track, organize, and rate all your favorite movies and TV shows</p>
+
+        <div class="features">
+            <div class="feature">
+                <h3>📋 Create Watchlists</h3>
+                <p>Organize all your movies and shows in one place</p>
+            </div>
+            <div class="feature">
+                <h3>⭐ Rate & Review</h3>
+                <p>Rate titles and track your viewing status</p>
+            </div>
+            <div class="feature">
+                <h3>👤 Personal Account</h3>
+                <p>Sign up and manage your own collection</p>
+            </div>
+            <div class="feature">
+                <h3>🔒 Secure</h3>
+                <p>Your watchlist is private and secure</p>
+            </div>
+        </div>
+
+        <div style="margin: 30px 0; text-align: left;">
+            <h3 style="color: #333; margin-bottom: 15px;">API Endpoints:</h3>
+            <div class="api-links">
+                <a href="/api/user/" class="api-link">GET /api/user/</a>
+                <a href="/api/media/" class="api-link">GET /api/media/</a>
+                <a href="/admin/" class="api-link">Admin Panel</a>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <a href="/api/register/" class="btn btn-primary">Get Started</a>
+            <a href="/admin/" class="btn btn-secondary">Admin Panel</a>
+        </div>
+
+        <div class="status">
+            <div class="status-item">
+                <span class="status-badge"></span>
+                <span class="status-text">Backend API is running</span>
+            </div>
+            <div class="status-item">
+                <span class="status-badge"></span>
+                <span class="status-text">Database is connected</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
